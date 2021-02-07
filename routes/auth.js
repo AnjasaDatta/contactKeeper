@@ -7,7 +7,7 @@ const config = require('config');
 const auth = require('../middleware/auth');
 const User = require('../models/User');
 
-//Get logged in user,private
+//Get logged in user
 router.get('/', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');
@@ -18,7 +18,7 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
-//auth logged in user,public
+//log in user
 router.post(
   '/',
   [

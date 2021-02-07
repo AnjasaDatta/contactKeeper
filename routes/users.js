@@ -7,7 +7,7 @@ const config = require('config');
 
 const User = require('../models/User');
 
-//Create or Register a user , public
+//Register a user
 router.post(
   '/',
   [

@@ -14,11 +14,12 @@ const Navbar = () => {
         <i className='fas fa-id-card-alt'> Contact Keeper</i>
       </h1>
       <ul>
-        <li>
-          <Link to='/about'>About</Link>
-        </li>
+        
         {!user ? (
           <Fragment>
+          <li>
+          <Link to='/about'>About</Link>
+        </li>
             <li>
               <Link to='/register'>Register</Link>
             </li>
@@ -28,6 +29,9 @@ const Navbar = () => {
           </Fragment>
         ) : (
           <Fragment>
+          <li>
+          <h4>Welcome {user.name} ! </h4>
+        </li>
             <li>
               <Link onClick={handleLogout} to='/logout'>
                 Logout

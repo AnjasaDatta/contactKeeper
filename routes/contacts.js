@@ -2,10 +2,9 @@ const express = require('express');
 const router = express.Router();
 const { body, validationResult } = require('express-validator');
 const auth = require('../middleware/auth');
-const User = require('../models/User');
 const Contact = require('../models/Contact');
 
-//Get contacts,private
+//Get contacts
 router.get('/', auth, async (req, res) => {
   try {
     const contact = await Contact.find({ user: req.user.id }).sort({
@@ -18,7 +17,7 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
-//Create contacts,private
+//Create contacts
 router.post(
   '/',
   [
@@ -51,7 +50,7 @@ router.post(
   }
 );
 
-//Update contacts,private
+//Update contacts
 router.put('/:id', auth, async (req, res) => {
   const { name, email, phone, type } = req.body;
   const contactFields = {};
@@ -79,7 +78,7 @@ router.put('/:id', auth, async (req, res) => {
   }
 });
 
-//Delete contacts,private
+//Delete contacts
 router.delete('/:id', auth, async (req, res) => {
   try {
     let contact = await Contact.findById(req.params.id);
